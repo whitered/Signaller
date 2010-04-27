@@ -1,0 +1,43 @@
+Signaller ActionScript library.
+
+Signal represents an event and allows to listen for it.
+
+Signaller is a wrapper on Singal class. It gives the ability to dispatch events.
+
+Both this classes are implement ISignal interface.
+
+Typical usage:
+
+ class Ticker
+ {
+   private const _onTick:Signaller = new Signaller();
+  
+   public const onTick:Signal = _tick.signal;
+
+   private function doSomething():void
+   {
+     ...
+     _onTick.dispatch("tick!");
+   }
+ }
+
+
+ class TickerManager
+ {
+   public function workWithTicker(ticker:Ticker):void
+   {
+     ticker.onTick.add(handleTick);
+
+     // It's impossible to dispatch onTick signal from outside of the ticker
+     // ticker.onTick.dispatch() - will fail
+   }
+
+
+
+   private function handleTick(tickerMessage:String):void
+   {
+     ticker.onTick.remove(handleTick);
+   }
+ }
+
+
