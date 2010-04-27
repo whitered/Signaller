@@ -12,7 +12,7 @@ Typical usage:
  {
    private const _onTick:Signaller = new Signaller();
   
-   public const onTick:Signal = _tick.signal;
+   public const onTick:Signal = _onTick.signal;
 
    private function doSomething():void
    {
