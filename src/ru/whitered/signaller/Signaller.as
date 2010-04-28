@@ -6,33 +6,41 @@ package ru.whitered.signaller
 	 */
 	public class Signaller implements ISignal
 	{
-		public const signal:Signal = new Signal();
+		private const _signal:Signal = new Signal();
+
+		
+		
+		public function get signal():Signal
+		{
+			return _signal;
+		}
+		
 		
 		
 		public function dispatch(... args):void
 		{
-			signal.dispatch(args);
+			_signal.dispatch(args);
 		}
 		
 		
 		
 		public function clean():void
 		{
-			signal.clean();
+			_signal.clean();
 		}
 		
 		
 		
 		public function add(callback:Function):Boolean
 		{
-			return signal.add(callback);
+			return _signal.add(callback);
 		}
 		
 		
 		
 		public function remove(callback:Function):Boolean
 		{
-			return signal.remove(callback);
+			return _signal.remove(callback);
 		}
 	}
 }
